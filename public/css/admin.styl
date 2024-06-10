@@ -1,0 +1,2246 @@
+/*----------------------------------------
+[Master Stylesheet]
+
+Project:	FlixTV HTML Template
+Version:	1.0
+Primary use:	FlixTV Admin Template
+----------------------------------------*/
+
+/*----------------------------------------
+[Table of contents]
+
+1. Fonts
+2. Common styles
+3. Header
+4. Sidebar
+5. Main
+6. Stats
+7. Dashbox
+8. Filter
+9. Paginator
+10. Form
+11. Profile
+12. Comments
+13. Reviews
+14. Sign
+15. Page 404
+16. Modal
+17. Select2
+18. Scrollbar-track
+----------------------------------------*/
+$white = #fff
+$black = #000
+$bg = #131720
+$blue = #151F30
+$blue2 = #2F80ED
+$grey = #e0e0e0
+$yellow = #FFC312
+$red = #EB5757
+$green = #29b474
+$purple = #d2c9ff
+
+/*==============================
+	Fonts
+==============================*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Rubik:ital,wght@0,300;0,400;0,500;1,400&display=swap')
+
+/*==============================
+	Common styles
+==============================*/
+html
+	-webkit-text-size-adjust 100%
+	-ms-text-size-adjust 100%
+html
+body
+	height 100%
+body
+	font-family 'Inter', sans-serif
+	font-weight 400
+	background-color $bg
+	font-weight normal
+	-webkit-font-smoothing antialiased
+button
+	padding 0
+	border none
+	background-color transparent
+	transition .5s ease
+	transition-property color, background-color, border-color
+	cursor pointer
+	&:focus
+		outline none
+a
+	transition .5s ease
+	transition-property color, background-color, border-color
+	&:hover
+	&:active
+	&:focus
+		outline none
+		text-decoration none
+input
+textarea
+select
+	padding 0
+	margin 0
+	border-radius 0
+	-webkit-appearance none
+	-moz-appearance none
+	-ms-appearance none
+	appearance none
+	box-shadow none
+	transition .5s ease
+	transition-property color, border-color
+	&:focus
+		outline none
+
+select::-ms-expand
+	display none
+
+ul
+	margin 0
+	padding 0
+	list-style none
+
+::-moz-selection
+	background $white
+	color $blue
+	text-shadow none
+::selection
+	background $white
+	color $blue
+	text-shadow none
+
+::-webkit-input-placeholder
+	color #f2f2f2
+	opacity 1
+::-moz-placeholder
+	color #f2f2f2
+	opacity 1
+:-moz-placeholder
+	color #f2f2f2
+	opacity 1
+:-ms-input-placeholder
+	color #f2f2f2
+	opacity 1
+
+:focus
+	outline -webkit-focus-ring-color auto 0px
+
+body::-webkit-scrollbar
+	width 16px
+
+body::-webkit-scrollbar-track
+	background $blue
+
+body::-webkit-scrollbar-thumb
+	background-color $blue2
+	outline 1px solid $blue
+
+.tab-content
+	width 100%
+
+.tab-content > .tab-pane
+	display none
+
+.tab-content > .active
+	display block
+
+.fade
+	transition opacity .4s linear
+
+@media screen and (prefers-reduced-motion: reduce)
+	.fade
+		transition none
+
+.fade:not(.show)
+	opacity 0
+
+.collapse:not(.show)
+	display none
+
+.collapsing
+	position relative
+	height 0
+	overflow hidden
+	transition height .4s ease
+
+@media screen and (prefers-reduced-motion: reduce)
+	.collapsing
+		transition none
+
+/*==============================
+	Header
+==============================*/
+.header
+	display block
+	position fixed
+	top 0
+	left 0
+	right 0
+	background-color $blue
+	z-index 100
+	transition .5s ease
+	&__content
+		display flex
+		flex-direction row
+		justify-content space-between
+		align-items center
+		height 70px
+		position relative
+		padding 0 15px
+	&__logo
+		display inline-flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		height 70px
+		background-color $blue
+		width 80%
+		img
+			width 80px
+			height auto
+			display block
+	&__btn
+		position absolute
+		width 24px
+		height 22px
+		display block
+		right 15px
+		top 24px
+		span
+			position absolute
+			right 0
+			width 24px
+			height 2px
+			background-color $white
+			border-radius 2px
+			transition .5s
+			opacity 1
+			&:first-child
+				top 0
+			&:nth-child(2)
+				top 10px
+				width 16px
+			&:last-child
+				top 20px
+				width 8px
+		&--active
+			span
+				background-color $blue2
+				&:first-child
+					transform rotate(45deg)
+					top 9px
+				&:nth-child(2)
+					opacity 0
+				&:last-child
+					width 24px
+					transform rotate(-45deg)
+					top 9px
+	@media (min-width: 1200px)
+		display none
+
+/*==============================
+	Sidebar
+==============================*/
+.sidebar
+	display flex
+	flex-direction column
+	justify-content flex-start
+	align-items flex-start
+	background-color $bg
+	position fixed
+	top 0
+	left 0
+	bottom 0
+	z-index 101
+	width 280px
+	transform translateX(-100%)
+	transition .5s ease
+	border-right 1px solid rgba($blue2, .1)
+	&__logo
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		height 70px
+		padding 0 30px
+		background-color $bg
+		width 100%
+		position relative
+		border-bottom 1px solid rgba($blue2, .1)
+		img
+			width 80px
+			height auto
+			display block
+	&__user
+		padding 20px 30px
+		width 100%
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		border-bottom 1px solid rgba($blue2, .1)
+	&__user-img
+		width 40px
+		height 40px
+		border-radius 10px
+		overflow hidden
+		display block
+		margin-right 15px
+		img
+			width 100%
+	&__user-title
+		display flex
+		flex-direction column
+		justify-content flex-start
+		align-items flex-start
+		p
+			color $white
+			display block
+			font-size 16px
+			font-weight 500
+			margin-bottom 0
+			line-height 100%
+		span
+			display block
+			color $grey
+			font-size 10px
+			line-height 100%
+			margin-bottom 5px
+	&__user-btn
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		height 40px
+		width 40px
+		border-radius 10px
+		background-color $blue
+		margin-left auto
+		svg
+			fill $blue2
+			width 20px
+			height auto
+			transition fill .5s
+		&:hover
+			background-color $white
+			svg
+				fill $blue
+	&__nav
+		display flex
+		flex-direction column
+		justify-content flex-start
+		align-items flex-start
+		position relative
+		padding 30px 0
+		width 100%
+		max-height calc(100vh - 220px)
+	&__nav-link
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		font-size 16px
+		color $grey
+		font-family 'Rubik', sans-serif
+		margin-left 30px
+		svg
+			fill $grey
+			width 24px
+			height auto
+			transition fill .5s
+			margin-right 15px
+			margin-bottom 2px
+			&:last-child
+				width 16px
+				margin-right 0
+				margin-top 2px
+				margin-left 2px
+				margin-bottom 0
+		&:hover
+			color $blue2
+			svg
+				fill $blue2
+		&--active
+		&[aria-expanded="true"]
+			color $blue2
+			svg
+				fill $blue2
+		&--active
+			cursor default
+	&__nav-item
+		width 100%
+		display block
+		margin-bottom 20px
+		position relative
+		&:last-child
+			margin-bottom 0
+	&__menu
+		padding 0
+		display block
+		width 100%
+		min-width 200px
+		text-align left
+		margin-top 15px
+		overflow hidden
+		background-color rgba($blue2, .1)
+		li
+			padding 0 0 0 49px
+			margin-bottom 15px
+			position relative
+			&:before
+				content ''
+				position absolute
+				display block
+				width 4px
+				height 4px
+				border-radius 50%
+				background-color $blue2
+				top 50%
+				left 30px
+				margin-top -2px
+			&:last-child
+				margin-bottom 0
+				padding-bottom 20px
+				&:before
+					top calc(50% - 10px)
+			&:first-child
+				padding-top 20px
+				&:before
+					top calc(50% + 10px)
+		a
+			font-size 14px
+			color $grey
+			display block
+			font-weight 400
+			&:hover
+				color $blue2
+			&.active
+				color $blue2
+				cursor default
+	&__copyright
+		margin-top auto
+		padding 0 30px 20px
+		color $grey
+		font-weight 400
+		font-size 12px
+		line-height 20px
+		a
+			color $white
+			&:hover
+				color $blue2
+	&--active
+		transform translateX(0)
+	@media (min-width: 1200px)
+		transform translateX(0)
+		&__logo
+			height 80px
+
+/*==============================
+	Main
+==============================*/
+.main
+	position relative
+	margin-top 70px
+	padding 20px 0 0
+	&__title
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		flex-wrap wrap
+		margin-bottom 20px
+		border-bottom 1px solid rgba($blue2, .1)
+		padding-bottom 20px
+		h2
+			font-family 'Rubik', sans-serif
+			font-weight 400
+			color $white
+			font-size 28px
+			line-height 100%
+			margin-bottom 0
+			b
+				font-weight 500
+	&__title-stat
+		color $grey
+		font-size 14px
+		margin-left 15px
+		margin-top 10px
+	&__title-wrap
+		display flex
+		flex-direction column
+		justify-content flex-start
+		align-items flex-start
+		margin-left auto
+		width 100%
+		margin-top 20px
+	&__title-form
+		position relative
+		margin-top 20px
+		width 100%
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		input
+			height 40px
+			border-radius 16px
+			background-color $blue
+			border none
+			padding 0 60px 0 20px
+			font-size 14px
+			color $white
+			width 100%
+			position relative
+			z-index 1
+		button
+			position absolute
+			display flex
+			flex-direction row
+			justify-content center
+			align-items center
+			width 16px
+			height 16px
+			right 20px
+			z-index 2
+			svg
+				width 16px
+				height auto
+	&__title-link
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		width 140px
+		height 40px
+		border-radius 16px
+		background-color $blue2
+		font-size 14px
+		color $grey
+		text-transform uppercase
+		font-weight 500
+		margin-left auto
+		&:hover
+			color $blue
+			background-color $white
+	&__table-wrap
+		position relative
+		width 100%
+		overflow auto
+	&__table
+		width 100%
+		min-width 1050px
+		border-spacing 0
+		thead
+			border-bottom 20px solid $bg
+			th
+				font-size 12px
+				color $grey
+				font-weight 400
+				padding 0 20px 0 20px
+				line-height 100%
+				margin-bottom 0
+				border none
+		tbody
+			tr
+				border-bottom 10px solid $bg
+			td
+				padding 0
+				background-color transparent
+				border 0px solid transparent
+				&:first-child
+					.main__table-text
+						border-radius 16px 0 0 16px
+				&:last-child
+					.main__table-text
+					.main__table-btns
+						border-radius 0 16px 16px 0
+		&--dash
+			width 100%
+			min-width 500px
+			thead
+				border-bottom 1px solid rgba($blue2, .1)
+				th
+					padding 0 10px 15px 0
+			tbody
+				tr
+					border-bottom none
+					background-color transparent
+				td
+					padding 0
+					.main__table-text
+						background-color transparent
+						padding 10px 15px 0 0
+	&__table-text
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		font-size 14px
+		color $white
+		font-weight 400
+		line-height 30px
+		padding 20px
+		background-color $blue
+		white-space nowrap
+		a
+			color $white
+			&:hover
+				color $blue2
+		svg
+			margin-right 6px
+			fill $blue2
+			width 16px
+			height auto
+		&--rate
+			font-weight 500
+			font-size 14px
+		&--red
+			color $red
+		&--green
+			color $green
+		&--grey
+			color rgba($white, .5)
+	&__table-btns
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		padding 20px
+		background-color $blue
+	&__table-btn
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		width 30px
+		height 30px
+		font-size 16px
+		color $white
+		border-radius 10px
+		background-color $bg
+		margin-right 10px
+		svg
+			width 20px
+			height auto
+		&:last-child
+			margin-right 0
+		&--delete
+			background-color rgba($red, .1)
+			svg
+				fill $red
+			&:hover
+				background-color rgba($red, .2)
+		&--edit
+			background-color rgba($blue2, .1)
+			svg
+				fill $blue2
+			&:hover
+				background-color rgba($blue2, .2)
+		&--banned
+			background-color rgba($green, .1)
+			svg
+				fill $green
+			&:hover
+				background-color rgba($green, .2)
+		&--view
+			background-color rgba($yellow, .1)
+			svg
+				fill $yellow
+			&:hover
+				background-color rgba($yellow, .2)
+	&__user
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		background-color $blue
+		padding 0 20px
+		height 70px
+	&__meta
+		display flex
+		flex-direction column
+		justify-content center
+		align-items flex-start
+		height 40px
+		h3
+			color $white
+			display block
+			font-size 16px
+			font-weight 500
+			margin-bottom 0
+			line-height 20px
+		span
+			color rgba($white, .7)
+			font-size 14px
+			line-height 20px
+	&__avatar
+		display block
+		position relative
+		width 40px
+		height 40px
+		overflow hidden
+		border-radius 10px
+		margin-right 15px
+		img
+			width 100%
+	@media (min-width: 576px)
+		padding 30px 0 0
+		&__title
+			margin-bottom 30px
+			padding-bottom 30px
+			h2
+				font-size 30px
+		&__title-wrap
+			flex-direction row
+			justify-content space-between
+			align-items center
+		&__title-form
+			margin-top 0
+			width 300px
+	@media (min-width: 768px)
+		&__title-wrap
+			width auto
+			margin-top 0
+	@media (min-width: 1200px)
+		padding 0 15px 30px 295px
+		margin-top 0
+		&__title
+			padding-bottom 0
+			height 80px
+
+/*==============================
+	Stats
+==============================*/
+.stats
+	display flex
+	flex-direction column
+	justify-content center
+	align-items flex-start
+	position relative
+	margin-bottom 20px
+	padding 20px
+	border-radius 16px
+	background-color $blue
+	width 100%
+	span
+		font-size 16px
+		line-height 100%
+		font-weight 400
+		color $white
+		margin-bottom 0
+	p
+		font-size 30px
+		line-height 100%
+		font-family 'Rubik', sans-serif
+		font-weight 400
+		color $grey
+		margin-bottom 0
+		margin-top 15px
+		a
+			color $white
+			&:hover
+				color $blue2
+	svg
+		position absolute
+		bottom 20px
+		right 20px
+		fill $blue2
+		height 34px
+		width auto
+	@media (min-width: 576px)
+		margin-bottom 30px
+
+/*==============================
+	Dashbox
+==============================*/
+.dashbox
+	background-color $blue
+	margin-bottom 20px
+	border-radius 16px
+	overflow hidden
+	&__title
+		display flex
+		flex-direction row
+		justify-content space-between
+		align-items center
+		padding 20px
+		border-bottom 1px solid rgba($blue2, .1)
+		h3
+			display flex
+			flex-direction row
+			justify-content flex-start
+			align-items center
+			color $white
+			font-weight 400
+			font-size 18px
+			line-height 100%
+			margin-bottom 0
+			font-family 'Rubik', sans-serif
+			font-weight 400
+			svg
+				fill $blue2
+				margin-right 10px
+				width 24px
+				height auto
+	&__wrap
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+	&__more
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		padding 0 10px
+		height 30px
+		background-color $bg
+		font-size 12px
+		margin-left 15px
+		color $grey
+		border-radius 12px
+		&:hover
+			color $blue2
+	&__refresh
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		width 22px
+		height 30px
+		svg
+			fill $grey
+			width 16px
+			height auto
+			transition fill .5s
+		&:hover
+			svg
+				fill $blue2
+	&__table-wrap
+		position relative
+		display block
+		width 100%
+		overflow auto
+		padding 20px 20px 15px
+	@media (min-width: 576px)
+		margin-bottom 30px
+
+/*==============================
+	Filter
+==============================*/
+.filter
+	position relative
+	display flex
+	flex-direction column
+	justify-content flex-start
+	align-items flex-start
+	&__item-label
+		font-size 12px
+		display block
+		color $grey
+		font-weight 400
+		line-height 10px
+	&__item-btn
+		display inline-flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		cursor pointer
+		height 30px
+		transition .5s
+		input
+			display block
+			position relative
+			width auto
+			background-color transparent
+			border none
+			font-size 14px
+			color $white
+			cursor pointer
+			height 30px
+			margin-right 10px
+		span
+			position relative
+			width 16px
+			height 16px
+			display block
+			margin-top 3px
+			&:before
+			&:after
+				content ''
+				position absolute
+				display block
+				width 16px
+				height 2px
+				background-color $grey
+				left 0
+				top 50%
+				transition .5s
+				margin-top -5px
+				border-radius 2px
+			&:after
+				margin-top 2px
+				width 10px
+		&[aria-expanded="true"]
+			span
+				&:before
+					transform rotate(45deg)
+					margin-top -2px
+					background-color $blue2
+				&:after
+					margin-top -2px
+					width 16px
+					transform rotate(-45deg)
+					background-color $blue2
+		&:hover
+			span
+				&:before
+				&:after
+					background-color $blue2
+	&__item-menu
+		top 100%
+		left 0
+		margin-top 0
+		width 200px
+		padding 0 20px
+		background-color $blue
+		display block
+		transition .5s
+		position absolute
+		z-index 100
+		pointer-events none
+		opacity 0
+		border-radius 16px
+		li
+			position relative
+			margin-bottom 15px
+			color $grey
+			font-size 14px
+			font-weight 400
+			cursor pointer
+			transition color .5s
+			&:hover
+				color $blue2
+			&:first-child
+				padding-top 20px
+			&:last-child
+				margin-bottom 0
+				padding-bottom 20px
+		&.show
+			pointer-events auto
+			opacity 1
+			margin-top 5px
+	@media (min-width: 768px)
+		margin-right 60px
+		margin-top 5px
+
+/*==============================
+	Paginator
+==============================*/
+.paginator
+	display flex
+	flex-direction row
+	justify-content center
+	align-items center
+	margin 20px auto 30px
+	width 100%
+	height 50px
+	border-radius 16px
+	background-color $blue
+	&__pages
+		display none
+	&__paginator
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		li
+			margin-right 15px
+			&:last-child
+				margin-right 0
+			&.active
+				a
+					color $blue2
+					cursor default
+		a
+			display flex
+			flex-direction row
+			justify-content center
+			align-items center
+			width 30px
+			height 30px
+			border-radius 12px
+			background-color $bg
+			font-size 14px
+			color $grey
+			font-weight 500
+			svg
+				stroke $grey
+				transition .5s
+			&:hover
+				color $blue2
+				svg
+					stroke $blue2
+	@media (min-width: 768px)
+		padding 0 20px
+		height 60px
+		justify-content space-between
+		&__pages
+			display block
+			font-size 14px
+			color $grey
+			font-weight 500
+	@media (min-width: 1200px)
+		margin 20px auto 0
+
+/*==============================
+	Form
+==============================*/
+.form
+	background-color $bg
+	padding 20px
+	border-radius 16px
+	margin-bottom 30px
+	border 1px solid rgba($blue2, .1)
+	.row
+		margin-right -10px
+		margin-left -10px
+	[class*="col-"]
+		padding-left 10px
+		padding-right 10px
+	&__group
+		position relative
+		margin-bottom 20px
+		width 100%
+		&--link
+			&:before
+				content ''
+				pointer-events none
+				position absolute
+				right 20px
+				top 0
+				height 44px
+				width 24px
+				background url('../img/link.svg') no-repeat center center
+				background-size 20px auto
+				z-index 1
+	&__input
+		background-color $blue
+		border 1px solid transparent
+		border-radius 16px
+		height 44px
+		position relative
+		color $white
+		font-size 14px
+		width 100%
+		padding 0 20px
+		&:focus
+			background-color $blue
+			border-color $blue2
+	&__textarea
+		background-color $blue
+		border 1px solid transparent
+		border-radius 16px
+		height 142px
+		position relative
+		color $white
+		font-size 14px
+		width 100%
+		padding 15px 20px
+		resize none
+		&:focus
+			background-color $blue
+			border-color $blue2
+	&__btn
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		width 100%
+		height 50px
+		border-radius 16px
+		background-color $blue2
+		font-size 14px
+		color $grey
+		text-transform uppercase
+		font-weight 500
+		&:hover
+			color $blue
+			background-color $white
+	&__radio
+		position relative
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		margin-bottom 20px
+		li
+			position relative
+			overflow hidden
+			margin-right 20px
+			&:last-child
+				margin-right 0
+		span
+			font-size 14px
+			color $grey
+		input
+			&:not(:checked)
+			&:checked
+				position absolute
+				left -9999px
+		label
+			display block
+			margin 0
+			position relative
+			font-weight 400
+			cursor pointer
+			font-size 14px
+			color $grey
+			line-height 24px
+			padding-left 25px
+			transition .5s
+			&:before
+				content ''
+				display block
+				position absolute
+				width 16px
+				height 16px
+				border 4px solid rgba($blue2, .5)
+				background-color transparent
+				border-radius 50%
+				left 0
+				top 4px
+				transition .5s
+		input:checked + label
+			color $white
+			&:before
+				border-color $blue2
+	&__video
+		position relative
+		width 100%
+		height 44px
+		margin-bottom 20px
+		overflow hidden
+		border-radius 16px
+		overflow hidden
+		input
+			position absolute
+			left -9999px
+			opacity 0
+			z-index 1
+		label
+			display flex
+			flex-direction row
+			justify-content flex-start
+			align-items center
+			position relative
+			z-index 2
+			height 44px
+			color $grey
+			padding 0 60px 0 20px
+			background-color $blue
+			margin 0
+			width 100%
+			font-size 14px
+			cursor pointer
+			transition .5s
+			&:before
+				content ''
+				pointer-events none
+				position absolute
+				right 20px
+				top 0
+				height 44px
+				width 24px
+				background url('../img/video.svg') no-repeat center center
+				background-size 24px auto
+			&:hover
+				color $white
+	&__gallery
+		position relative
+		width 100%
+		height 44px
+		margin-bottom 20px
+		overflow hidden
+		border-radius 16px
+		input
+			position absolute
+			left -9999px
+			opacity 0
+			z-index 1
+		label
+			display flex
+			flex-direction row
+			justify-content flex-start
+			align-items center
+			position relative
+			z-index 2
+			height 44px
+			color $grey
+			padding 0 60px 0 20px
+			background-color $blue
+			margin 0
+			width 100%
+			font-size 14px
+			cursor pointer
+			transition .5s
+			&:before
+				content ''
+				pointer-events none
+				position absolute
+				right 20px
+				top 0
+				height 44px
+				width 20px
+				background url('../img/img.svg') no-repeat center center
+				background-size 20px auto
+			&:hover
+				color $white
+	&__img
+		position relative
+		width 100%
+		height 400px
+		overflow hidden
+		background-color $blue
+		margin-bottom 20px
+		border-radius 16px
+		overflow hidden
+		input
+			position absolute
+			left -9999px
+			opacity 0
+		label
+			position absolute
+			display flex
+			flex-direction row
+			justify-content center
+			align-items center
+			top 0
+			right 0
+			bottom 0
+			left 0
+			z-index 2
+			cursor pointer
+			margin 0
+			font-weight normal
+			font-size 14px
+			color $grey
+			transition .5s
+			&:hover
+				color $white
+		img
+			position absolute
+			z-index 1
+			top -100px
+			right -100px
+			bottom -100px
+			left -100px
+			margin auto
+			width 100%
+	@media (min-width: 768px)
+		&__cover
+			-ms-flex 0 0 290px
+			flex 0 0 290px
+			max-width 290px
+		&__content
+			-ms-flex 0 0 calc(100% - 290px)
+			flex 0 0 calc(100% - 290px)
+			max-width 100%
+		&__btn
+			width 180px
+
+/*==============================
+	Profile
+==============================*/
+.profile
+	&__content
+		display flex
+		flex-direction column
+		justify-content flex-start
+		align-items flex-start
+		padding 20px
+		background-color $blue
+		margin-bottom 30px
+		position relative
+		border-radius 16px
+	&__user
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		margin-bottom 15px
+	&__meta
+		display flex
+		flex-direction column
+		justify-content center
+		align-items flex-start
+		height 40px
+		h3
+			color $white
+			display block
+			font-size 16px
+			font-weight 500
+			margin-bottom 5px
+			line-height 100%
+		span
+			color $grey
+			font-size 12px
+			line-height 100%
+		&--green
+			h3
+				span
+					color $green
+		&--red
+			h3
+				span
+					color $red
+	&__avatar
+		display block
+		position relative
+		width 40px
+		cursor pointer
+		overflow hidden
+		border-radius 10px
+		margin-right 15px
+		img
+			width 100%
+	&__tabs
+		display none
+	&__mobile-tabs
+		position relative
+		margin-bottom -10px
+	&__mobile-tabs-btn
+		display inline-flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		cursor pointer
+		height 30px
+		transition .5s
+		input
+			display block
+			position relative
+			width auto
+			background-color transparent
+			border none
+			font-size 14px
+			color $white
+			cursor pointer
+			height 30px
+			margin-right 10px
+		span
+			position relative
+			width 16px
+			height 16px
+			display block
+			margin-top 3px
+			&:before
+			&:after
+				content ''
+				position absolute
+				display block
+				width 16px
+				height 2px
+				background-color $grey
+				left 0
+				top 50%
+				transition .5s
+				margin-top -5px
+				border-radius 2px
+			&:after
+				margin-top 2px
+				width 10px
+		&[aria-expanded="true"]
+			span
+				&:before
+					transform rotate(45deg)
+					margin-top -2px
+					background-color $blue2
+				&:after
+					margin-top -2px
+					width 16px
+					transform rotate(-45deg)
+					background-color $blue2
+		&:hover
+			span
+				&:before
+				&:after
+					background-color $blue2
+	&__mobile-tabs-menu
+		top 100%
+		left 0
+		margin-top -10px
+		width 200px
+		padding 0 20px
+		background-color $blue
+		display block
+		transition .5s
+		position absolute
+		z-index 100
+		pointer-events none
+		opacity 0
+		border-radius 16px
+		li
+			position relative
+			margin-bottom 15px
+			color $grey
+			font-size 14px
+			font-weight 400
+			cursor pointer
+			&:first-child
+				padding-top 20px
+			&:last-child
+				margin-bottom 0
+				padding-bottom 20px
+		a
+			color $grey
+			&:hover
+				color $blue2
+		&.show
+			pointer-events auto
+			opacity 1
+			margin-top 0px
+	&__actions
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		position absolute
+		bottom 20px
+		right 20px
+	&__action
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		width 30px
+		height 30px
+		font-size 16px
+		color $white
+		border-radius 10px
+		background-color $bg
+		margin-right 10px
+		svg
+			width 20px
+			height auto
+		&:last-child
+			margin-right 0
+		&:hover
+			opacity 1
+		&--delete
+			background-color rgba($red, .1)
+			svg
+				fill $red
+			&:hover
+				background-color rgba($red, .2)
+		&--edit
+			background-color rgba($blue2, .1)
+			svg
+				fill $blue2
+			&:hover
+				background-color rgba($blue2, .2)
+		&--banned
+			background-color rgba($green, .1)
+			svg
+				fill $green
+			&:hover
+				background-color rgba($green, .2)
+		&--view
+			background-color rgba($yellow, .1)
+			svg
+				fill $yellow
+			&:hover
+				background-color rgba($yellow, .2)
+	@media (min-width: 768px)
+		&__content
+			flex-direction row
+			justify-content flex-start
+			align-items center
+			padding 0 20px
+			height 80px
+		&__user
+			width auto
+			margin-bottom 0
+			margin-right 40px
+		&__tabs
+			display flex
+			flex-direction row
+			justify-content flex-start
+			align-items center
+			overflow hidden
+			li
+				margin-right 30px
+				&:last-child
+					margin-right 0
+			a
+				display block
+				line-height 80px
+				color $white
+				position relative
+				font-size 14px
+				&:hover
+					color $blue2
+				&:before
+					content ''
+					position absolute
+					bottom 0
+					left 0
+					right 0
+					height 2px
+					display block
+					background-color $blue2
+					transition .5s
+					transform translateY(2px)
+					opacity 0
+				&.active
+					color $blue2
+					&:before
+						opacity 1
+						transform translateY(0)
+		&__mobile-tabs
+			display none
+		&__actions
+			position relative
+			bottom auto
+			right auto
+			margin-left auto
+		&__action
+			margin-right 15px
+			&:last-child
+				margin-right 0
+	@media (min-width: 1200px)
+		&__tabs
+			li
+				margin-right 40px
+				&:last-child
+					margin-right 0
+		&__user
+			margin-right 60px
+
+/*==============================
+	Comments
+==============================*/
+.comments
+	&__autor
+		display block
+		position relative
+		padding-left 75px
+		margin-bottom 20px
+	&__avatar
+		position absolute
+		top 0
+		left 20px
+		width 40px
+		border-radius 10px
+	&__name
+		display block
+		font-size 16px
+		color $white
+		line-height 20px
+		font-weight 500
+	&__time
+		display block
+		font-size 12px
+		color $grey
+		line-height 20px
+		font-weight 400
+	&__text
+		display block
+		margin 0 20px
+		color $white
+		font-size 16px
+		line-height 26px
+		background-color $blue
+		padding 20px 0
+		position relative
+		border-top 1px solid rgba($blue2, .1)
+		border-bottom 1px solid rgba($blue2, .1)
+		span
+			display block
+			background-color $bg
+			margin-bottom 20px
+			padding 20px
+			position relative
+			min-height 80px
+			border-radius 16px
+			color $white
+	&__actions
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		background-color $blue
+		padding 20px
+		position relative
+		span
+			display flex
+			flex-direction row
+			justify-content flex-start
+			align-items center
+			font-size 12px
+			color $grey
+			margin-right 20px
+			height 22px
+			text-transform uppercase
+			font-weight 400
+			svg
+				stroke $blue2
+				width 16px
+				height auto
+				margin-right 5px
+			&:last-child
+				margin-right 0
+	&__rate
+		display flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		position relative
+		span
+			display flex
+			flex-direction row
+			justify-content center
+			align-items center
+			color $grey
+			font-size 14px
+			margin-right 26px
+			position relative
+			height 20px
+			svg
+				width 16px
+				height auto
+				transition .5s
+			&:last-child
+				margin-right 0
+				svg
+					margin-left 10px
+					stroke $red
+			&:first-child
+				svg
+					margin-right 10px
+					stroke $green
+				&:before
+					content ''
+					position absolute
+					display block
+					left 100%
+					margin-left 12px
+					width 1px
+					height 16px
+					background-color rgba($blue2, .1)
+					top 50%
+					transform translateY(-50%)
+
+/*==============================
+	Reviews
+==============================*/
+.reviews
+	&__autor
+		display block
+		position relative
+		padding-left 75px
+		margin-bottom 20px
+	&__avatar
+		position absolute
+		top 0
+		left 20px
+		width 40px
+		border-radius 10px
+	&__name
+		display block
+		font-size 16px
+		color $white
+		line-height 20px
+		font-weight 500
+	&__time
+		display block
+		font-size 12px
+		color $grey
+		font-weight 400
+		line-height 20px
+	&__text
+		display block
+		margin 0 20px
+		color $white
+		font-size 16px
+		line-height 26px
+		background-color $blue
+		padding 20px 0
+		position relative
+		border-top 1px solid rgba($blue2, .1)
+	&__rating
+		font-size 14px
+		font-weight 500
+		color $white
+		position absolute
+		display inline-flex
+		flex-direction row
+		justify-content flex-start
+		align-items center
+		right 20px
+		top 10px
+		svg
+			margin-right 6px
+			fill $blue2
+			width 16px
+			height auto
+
+/*==============================
+	Sign
+==============================*/
+.sign
+	display block
+	position relative
+	&__content
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		width 100%
+		min-height 100vh
+		padding 40px 0
+	&__form
+		background-color $bg
+		display flex
+		flex-direction column
+		justify-content center
+		align-items center
+		border-radius 16px
+		padding 30px 20px
+		position relative
+		width 100%
+		max-width 400px
+		border 1px solid $blue
+		&--profile
+			margin-top 20px
+			max-width 100%
+			padding 20px 20px 5px
+			.row
+				margin-left -10px
+				margin-right -10px
+			.col-12
+				padding-left 10px
+				padding-right 10px
+			.sign__btn
+				margin 5px 0 15px
+		&--first
+			margin-top 0
+	&__logo
+		display block
+		margin-bottom 30px
+		a
+			max-width 100%
+			width auto
+		img
+			width 90px
+	&__title
+		font-size 16px
+		font-weight 500
+		font-family 'Rubik', sans-serif
+		color $white
+		margin-bottom 20px
+	&__label
+		font-weight 400
+		font-size 14px
+		color $grey
+		margin-bottom 5px
+	&__input
+		background-color $blue
+		border 1px solid transparent
+		border-radius 16px
+		height 44px
+		position relative
+		color $white
+		font-size 14px
+		width 100%
+		padding 0 20px
+		&:focus
+			background-color $blue
+			border-color $blue2
+	&__textarea
+		background-color $blue
+		border 1px solid transparent
+		border-radius 16px
+		height 144px
+		position relative
+		color $white
+		font-size 14px
+		width 100%
+		padding 15px 20px
+		resize none
+		&:focus
+			background-color $blue
+			border-color $blue2
+	&__group
+		position relative
+		margin-bottom 20px
+		width 100%
+		&--checkbox
+			width 100%
+			text-align left
+			input
+				&:not(:checked)
+				&:checked
+					position absolute
+					left -9999px
+				&:not(:checked) + label
+				&:checked + label
+					font-size 14px
+					color $grey
+					font-weight normal
+					position relative
+					cursor pointer
+					padding-left 35px
+					line-height 22px
+					margin 0
+					a
+						color $blue2
+						&:hover
+							color $blue2
+							text-decoration underline
+				&:not(:checked) + label:before
+				&:checked + label:before
+					content ''
+					position absolute
+					left 0
+					top 0
+					width 22px
+					height 22px
+					background-color $blue
+					border 1px solid transparent
+					border-radius 8px
+				&:not(:checked) + label:after
+				&:checked + label:after
+					content ''
+					position absolute
+					left 0
+					top 0
+					width 22px
+					height 22px
+					text-align center
+					transition .5s
+					background url('../img/checkmark.svg') no-repeat center / 12px auto
+					border-radius 8px
+				&:not(:checked) + label:after
+					opacity 0
+					transform scale(0)
+				&:checked + label:after
+					opacity 1
+					transform scale(1)
+			label
+				&::-moz-selection
+					background transparent
+					color $grey
+				&::selection
+					background transparent
+					color $grey
+	&__btn
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		margin 15px auto
+		width 100%
+		height 50px
+		border-radius 16px
+		background-color $blue2
+		font-size 14px
+		color $grey
+		text-transform uppercase
+		font-weight 500
+		&:hover
+			color $blue
+			background-color $white
+	&__text
+		margin-top 15px
+		font-size 14px
+		color $grey
+		a
+			position relative
+			color $blue2
+			&:hover
+				color $blue2
+				text-decoration underline
+	&__delimiter
+		font-size 14px
+		color $grey
+		line-height 100%
+	&__social
+		display flex
+		flex-direction row
+		justify-content space-between
+		align-items center
+		width 100%
+		margin-bottom 15px
+		margin-top 15px
+		a
+			display flex
+			flex-direction row
+			justify-content center
+			align-items center
+			height 44px
+			width calc(33% - 10px)
+			border-radius 16px
+			color $white
+			svg
+				height auto
+				fill $white
+				transition .5s
+			&.fb
+				background-color #3b5999
+				svg
+					width 10px
+			&.gl
+				background-color #df4a32
+				svg
+					width 18px
+			&.tw
+				background-color #1da1f2
+				svg
+					width 18px
+			&:hover
+				background-color $white
+				&.fb
+					svg
+						fill #3b5999
+				&.gl
+					svg
+						fill #df4a32
+				&.tw
+					svg
+						fill #1da1f2
+	&__wrap
+		background-color $blue
+		padding 20px
+		border-radius 16px
+		margin-bottom 30px
+		.row
+			margin-left -10px
+			margin-right -10px
+		.col-12
+			padding-left 10px
+			padding-right 10px
+	@media (min-width: 576px)
+		&__form
+			padding 40px
+			&--profile
+				padding 20px 20px 5px
+		&__logo
+			margin-bottom 40px
+	@media (min-width: 768px)
+		&__form
+			&--first
+				margin-top 0
+	@media (min-width: 992px)
+		&__form
+			&--profile
+				margin-top 0
+				.sign__btn
+					width 180px
+
+/*==============================
+	Page 404
+==============================*/
+.page-404
+	display block
+	position relative
+	&__wrap
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		width 100%
+		min-height 100vh
+		padding 40px 0
+	&__content
+		background-color $bg
+		display flex
+		flex-direction column
+		justify-content center
+		align-items center
+		border-radius 16px
+		padding 20px
+		position relative
+		width 100%
+		max-width 400px
+		border 1px solid $blue
+	&__title
+		position relative
+		color $blue2
+		line-height 100%
+		font-size 120px
+		margin-bottom 10px
+		font-weight 500
+		font-family 'Rubik', sans-serif
+	&__text
+		text-align center
+		display block
+		width 100%
+		color $white
+		font-size 14px
+		line-height 26px
+		margin-bottom 40px
+	&__btn
+		display flex
+		flex-direction row
+		justify-content center
+		align-items center
+		margin 0 auto
+		width 100%
+		height 50px
+		border-radius 16px
+		background-color $blue2
+		font-size 14px
+		color $grey
+		text-transform uppercase
+		font-weight 500
+		&:hover
+			color $blue
+			background-color $white
+	@media (min-width: 576px)
+		&__content
+			padding 40px
+
+/*==============================
+	Modal
+==============================*/
+.modal
+	position relative
+	display block
+	background-color $blue
+	margin 40px auto
+	width 100%
+	max-width 420px
+	padding 20px
+	border-radius 16px
+	overflow hidden
+	.mfp-close
+		display none
+	&__title
+		font-family 'Rubik', sans-serif
+		font-weight 400
+		color $white
+		font-size 28px
+		line-height 100%
+		margin-bottom 15px
+		text-align center
+		display block
+	&__text
+		font-size 14px
+		line-height 24px
+		color $grey
+		font-weight 400
+		display block
+		text-align center
+		margin-bottom 0
+	&__btns
+		display flex
+		flex-direction row
+		justify-content space-between
+		align-items center
+		margin-top 20px
+	&__btn
+		display flex
+		justify-content center
+		align-items center
+		height 40px
+		width calc(50% - 10px)
+		border-radius 16px
+		font-size 14px
+		color $grey
+		text-transform uppercase
+		font-weight 500
+		&--apply
+			background-color $blue2
+			&:hover
+				color $green
+				background-color $white
+		&--dismiss
+			background-color $white
+			color $blue
+			&:hover
+				color $red
+				background-color $white
+	&--view
+		padding 20px 0 0 0
+		max-width 700px
+	@media (min-width: 768px)
+		padding 30px
+		&--view
+			padding 20px 0 0 0
+		&__btns
+			margin-top 30px
+		&__btn
+			width calc(50% - 15px)
+
+.mfp-bg
+	background rgba($bg, .8)
+
+.my-mfp-zoom-in .zoom-anim-dialog
+	opacity 0
+	transition all 0.3s ease-in-out
+	transform scale(0.8)
+
+.my-mfp-zoom-in.mfp-ready .zoom-anim-dialog
+	opacity 1
+	transform scale(1)
+
+.my-mfp-zoom-in.mfp-removing .zoom-anim-dialog
+	transform scale(0.8)
+	opacity 0
+
+.my-mfp-zoom-in.mfp-bg
+	opacity 0
+	transition opacity 0.3s ease-out
+
+.my-mfp-zoom-in.mfp-ready.mfp-bg
+	opacity 1
+
+.my-mfp-zoom-in.mfp-removing.mfp-bg
+	opacity 0
+
+/*==============================
+	Select2
+==============================*/
+.select2
+	width 100% !important
+	height 44px
+	margin-bottom 0
+
+.select2-search--dropdown
+.select2-container--default .select2-selection--single .select2-selection__clear
+	display none
+
+.select2-container--default .select2-selection--single
+	border none
+	height 44px
+	color $white
+	padding 0 40px 0 20px
+	background-color $blue
+	width 100%
+	font-size 14px
+	border-radius 16px
+	outline none !important
+	.select2-selection__arrow
+		height 44px
+		top 0
+		right 0
+		width 40px
+		b
+			border-color $blue2 transparent transparent transparent
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b
+	border-color transparent transparent $blue2 transparent
+
+.select2-container--default .select2-selection--multiple
+	border none
+	height 44px
+	color $white
+	padding 0 40px 0 20px
+	background-color $blue
+	width 100%
+	font-size 14px
+	border-radius 16px
+
+.select2-container--default.select2-container--focus .select2-selection--multiple
+	border none
+	
+.select2-container--default .select2-selection--multiple .select2-selection__rendered
+	padding 0
+
+.select2-container .select2-search--inline .select2-search__field
+	font-size 14px
+	height 44px
+	margin 0
+	color $white
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice
+	background-color rgba($blue2, .1)
+	border none
+	border-radius 12px
+	display flex
+	flex-direction row
+	justify-content flex-start
+	align-items center
+	height 30px
+	margin-top 7px
+	color $white
+	padding 0 10px
+	margin-right 10px
+	
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove
+	color $blue2
+	margin-right 7px
+	transition color .5s
+	&:hover
+		color $red
+
+.select2-container .select2-selection--single .select2-selection__rendered
+	padding 0
+	color $white
+	line-height 44px
+
+.select2-dropdown
+	border none
+	border-radius 0
+	padding 10px 20px
+	background-color $blue
+
+.select2-results__option
+	padding 0
+	line-height 40px
+	font-size 14px
+	color $grey
+	line-height 40px
+	display block
+	transition .5s
+	
+.select2-container--default .select2-results__option--highlighted[aria-selected]
+	background-color transparent
+	color $blue2
+
+.select2-container--default .select2-results__option[aria-selected="true"]
+	background-color transparent
+	color $blue2
+	cursor default
+
+.select2-container--open
+	.select2-dropdown--below
+		border-bottom-left-radius 16px
+		border-bottom-right-radius 16px
+	.select2-dropdown--above
+		border-top-left-radius 16px
+		border-top-right-radius 16px
+
+/*==============================
+	Scrollbar-track
+==============================*/
+.scrollbar-track-y
+	background $bg !important
+	top 10px !important
+	bottom 10px !important
+	height auto !important
+	width 4px !important
+	border-radius 4px !important
+	right 10px !important
+	overflow hidden
+
+.scrollbar-thumb-y
+	background $blue2 !important
+	width 4px !important
+	border-radius 4px !important
+
+.scrollbar-track-x
+	background $bg !important
+	left 10px !important
+	right 10px !important
+	height 4px !important
+	width auto !important
+	border-radius 4px !important
+	bottom 10px !important
+	overflow hidden
+
+.scrollbar-thumb-x
+	background $blue2 !important
+	height 4px !important
+	border-radius 4px !important
