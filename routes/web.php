@@ -20,9 +20,15 @@ Route::middleware(['auth','verified'])->group(function () {
 
     // ajax upload image
     Route::post('/profile/upload', [UserController::class,'upload']);
+
+    // comment feature implimentation
+    Route::get('/comments', function () {
+        return "List all comment";}
+    ) ;
 });
 
 // Auth route + is Admin user 
 Route::middleware(['auth','verified', IsAdmin::class])->group(function () {
     Route::get('/admin', [DashboardController::class,'index']);
 });
+
