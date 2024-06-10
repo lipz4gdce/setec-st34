@@ -26,6 +26,3 @@ Route::middleware(['auth','verified'])->group(function () {
 Route::middleware(['auth','verified', IsAdmin::class])->group(function () {
     Route::get('/admin', [DashboardController::class,'index']);
 });
-
-
-// update from my local repo
