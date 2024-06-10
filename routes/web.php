@@ -6,6 +6,8 @@ use App\Http\Middleware\IsAdmin;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\UserController;
 
+
+// Hello Welcome to merge conflict
 // Public route 
 Route::get('/', function () {
     return view('welcome');
