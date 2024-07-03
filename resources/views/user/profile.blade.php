@@ -1,6 +1,6 @@
 @extends('admin.template')
 @section('content')
-    
+
 <!-- profile -->
 <div class="col-12">
     <div class="profile__content">
@@ -12,7 +12,7 @@
             </div>
             <!-- or red -->
             <div class="profile__meta profile__meta--green">
-                <h3>{{ Auth::user()->name }} 
+                <h3>{{ Auth::user()->name }}
                     <span>({{ (Auth::user()->status) ? 'Approved' : 'Block' }} )</span>
                 </h3>
                 <span>FlixTV ID: {{ Auth::user()->id }}</span>
@@ -165,7 +165,7 @@
     image.click(function () {
             fileupload.click();
         });
-        
+
     fileupload.change(function (e) {
         file = this.files[0];
         console.log(file);

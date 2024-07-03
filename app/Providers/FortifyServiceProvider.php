@@ -29,7 +29,7 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.login');
         });
 
-        // enable register view 
+        // enable register view
         Fortify::registerView(function () {
             return view('auth.register');
         });
@@ -39,7 +39,7 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::verifyEmailView(function () {
             return view('auth.verify-email');
         });
-        
+
 
         // Request reset password view
         Fortify::requestPasswordResetLinkView(function () {
@@ -50,7 +50,7 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
 
-        // customs logout redirect 
+        // customs logout redirect
         $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
             public function toResponse($request)
             {
@@ -59,12 +59,11 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
 
-        // customs after login success redirect 
+        // customs after login success redirect
         $this->app->instance(LoginResponse::class, new class implements LoginResponse {
             public function toResponse($request)
             {
-                // return redirect('/login');
-                if (Auth::user()->is_admin)  
+                if (Auth::user()->is_admin)
                     return redirect('/admin');
                 return redirect('/');
             }

@@ -27,19 +27,45 @@
                         @if (Route::has('login'))
                             <nav class="-mx-3 flex flex-1 justify-end">
                                 @auth
-                                    <form action="{{ route('logout')}}" method="POST" > 
+                                    <form action="{{ route('logout')}}" method="POST" >
                                     @csrf
                                     <a
                                         href="{{ url('/dashboard') }}"
                                         class="rounded-md px-5 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                     >
-                                        Dashboard
+                                    @if(Auth::user()->subscriptions->isEmpty())
+        <p>You have no subscriptions.</p>
+    @else
+        @php
+            $activeSubscription = Auth::user()->subscriptions->firstWhere('stripe_status', 'active');
+        @endphp
+
+        @if($activeSubscription)
+            <p>You are subscribed to the {{ Auth::user()->subscription_plan }} Plan!</p>
+        @else
+            <p>You have no active subscriptions. Here are your subscription details for debugging:</p>
+            <ul>
+                @foreach(Auth::user()->subscriptions as $subscription)
+                    <li>Plan: {{ $subscription->stripe_price }}</li>
+                    <li>Status: {{ $subscription->stripe_status }}</li>
+                    <li>Ends At: {{ $subscription->ends_at }}</li>
+                    <li>Created At: {{ $subscription->created_at }}</li>
+                @endforeach
+            </ul>
+        @endif
+    @endif
                                     </a>
-                                    <button type="submit" 
+                                    <a
+                                        href="{{ url('/billing') }}"
+                                        class="rounded-md px-5 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        Billing|
+                                    </a>
+                                    <button type="submit"
                                     class="rounded-md px-5 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                    > Logout </button>   
+                                    > Logout </button>
                                     </form>
-                                    
+
                                 @else
                                     <a
                                         href="{{ route('login') }}"
